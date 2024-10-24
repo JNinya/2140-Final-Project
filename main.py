@@ -1,6 +1,6 @@
-from cryptography import file
+from cryptography import *
 
 
-test = file("The quick brown fox jumped over the lazy dog")
+file = File("test_file.txt")
 
-print(test.plain_text)
+print(file.raw_data())

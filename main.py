@@ -1,6 +1,7 @@
 from crypto import *
 
 
-file = File("test_file.txt")
+file = Crypto()
+file.openFile("test_file.txt")
 
-print(file.raw_data())
+print(file.data)

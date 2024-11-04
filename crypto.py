@@ -3,16 +3,22 @@ from cryptography.fernet import Fernet
 
 
     
-key = Fernet.generate_key()
-print(key)
+"""key = Fernet.generate_key()
+#print(key)
+
+f = Fernet(key)
+
+token = f.encrypt(b"test")"""
 
 
 
-class File:
-    def __init__(self, file_name):
-        file = open(file_name, "r", encoding="utf8")
-        self.__data = file.read()
-        file.close()
+class Crypto:
+    def __init__(self):
+        self.data = ""
 
-    def raw_data(self):
-        return self.__data
+    def openFile(self, file_name):
+        with open(file_name, "r", encoding="utf8") as file:
+            self.data = file.read()
+    
+    def encrypt(self):
+        return

@@ -1,4 +1,4 @@
-from cryptography import *
+from crypto import *
 
 
 file = File("test_file.txt")

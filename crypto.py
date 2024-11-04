@@ -1,3 +1,13 @@
+from cryptography.fernet import Fernet
+
+
+
+    
+key = Fernet.generate_key()
+print(key)
+
+
+
 class File:
     def __init__(self, file_name):
         file = open(file_name, "r", encoding="utf8")

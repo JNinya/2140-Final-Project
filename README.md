@@ -1,11 +1,10 @@
-Final project for computer fundementals class made by
+End-to-end encryption tool made by:
 
-Jack Sprague
+- Jack Sprague
+- Ben Yaker
+- Michael Shteynberg
 
-Ben Yaker
-
-Michael Shteynberg
 ---
 THE PLAN:
-Step 1
-this is jacks change
+- Text encryptiona and decryption - Jack
+- User interface - Michael

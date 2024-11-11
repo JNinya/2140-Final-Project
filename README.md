@@ -6,5 +6,7 @@ End-to-end encryption tool made by:
 
 ---
 THE PLAN:
-- Text encryptiona and decryption - Jack
+- Text encryption and decryption (symetric) - Jack
+- Password Hashing - Jack
 - User interface - Michael
+- Private/public (asymetric) encryption - Ben

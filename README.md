@@ -5,7 +5,7 @@ End-to-end encryption tool made by:
 - Michael Shteynberg
 
 ---
-THE PLAN:
+TASKS FOR ITERATION 3:
 - Text encryption and decryption (symetric) - Jack
 - Password Hashing - Jack
 - User interface - Michael

@@ -1,4 +1,4 @@
-import os
+import base64
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
@@ -24,32 +24,19 @@ def sym_decrypt(token, key):
     f = Fernet(key)
     return f.decrypt(token).decode('ascii')
 
-
-"""# Salts should be randomly generated
-salt = os.urandom(16)
-# derive
-kdf = PBKDF2HMAC(
+#derives a key from a password string
+def deriveKey(password, length, salt):
+    kdf = PBKDF2HMAC(
     algorithm=hashes.SHA256(),
-    length=32,
+    length=length,
     salt=salt,
     iterations=480000,
-)
+    )
 
-key = kdf.derive(b"steiny")
+    #key = kdf.derive(password.encode('ascii'))
+    key = base64.urlsafe_b64encode(kdf.derive(password.encode('ascii')))
 
-print(key)
-
-
-salt = os.urandom(16)
-# verify
-kdf = PBKDF2HMAC(
-    algorithm=hashes.SHA256(),
-    length=32,
-    salt=salt,
-    iterations=480000,
-)
-kdf.verify(b"steiny", key)"""
-
+    return key.decode('ascii')
 
 
 #Old stuff that isn't being used rn

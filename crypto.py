@@ -1,4 +1,7 @@
+import os
 from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 #returns a new generated a 32-byte fernet key for symmetric encryption
 def generateSymKey():
@@ -22,7 +25,30 @@ def sym_decrypt(token, key):
     return f.decrypt(token).decode('ascii')
 
 
+"""# Salts should be randomly generated
+salt = os.urandom(16)
+# derive
+kdf = PBKDF2HMAC(
+    algorithm=hashes.SHA256(),
+    length=32,
+    salt=salt,
+    iterations=480000,
+)
 
+key = kdf.derive(b"steiny")
+
+print(key)
+
+
+salt = os.urandom(16)
+# verify
+kdf = PBKDF2HMAC(
+    algorithm=hashes.SHA256(),
+    length=32,
+    salt=salt,
+    iterations=480000,
+)
+kdf.verify(b"steiny", key)"""
 
 
 

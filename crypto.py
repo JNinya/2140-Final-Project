@@ -1,5 +1,32 @@
 from cryptography.fernet import Fernet
 
+#returns a new generated a 32-byte fernet key for symmetric encryption
+def generateSymKey():
+    key = Fernet.generate_key()
+    return key.decode('ascii')
+
+#returns encrypted data using a key with the fernet symmetric encryption algorithm
+def sym_encrypt(data, key):
+    data = data.encode('ascii')
+    key = key.encode('ascii')
+
+    f = Fernet(key)
+    return f.encrypt(data).decode('ascii')
+
+#returns decrypted data using a key with the fernet symmetric encryption algorithm
+def sym_decrypt(token, key):
+    token = token.encode('ascii')
+    key = key.encode('ascii')
+
+    f = Fernet(key)
+    return f.decrypt(token).decode('ascii')
+
+
+
+
+
+
+#Old stuff that isn't being used rn
 """
 The Crypto class contains 3 main pieces of info:
 
@@ -56,24 +83,3 @@ class sym:
         def decrypt(self):
             f = Fernet(self.key)
             self.data = f.decrypt(self.token)"""
-
-
-
-def generateSymKey():
-    key = Fernet.generate_key()
-    return key.decode('ascii')
-
-def sym_encrypt(data, key):
-    data = data.encode('ascii')
-    key = key.encode('ascii')
-
-    f = Fernet(key)
-    return f.encrypt(data).decode('ascii')
-
-def sym_decrypt(token, key):
-    token = token.encode('ascii')
-    key = key.encode('ascii')
-
-
-    f = Fernet(key)
-    return f.decrypt(token).decode('ascii')

@@ -20,22 +20,35 @@ decryption_frame = tk.Frame(window)
 toggle_button = tk.Button(window, text="Switch to Decryption", command=toggle_frame)
 toggle_button.grid(row=1, column=0, columnspan=2)
 
-tk.Label(encryption_frame, text="Encryption - Statement:").grid(row=0, column=0)
+# Encryption Frame
+tk.Label(encryption_frame, text="Recipient's Public Key: ").grid(row=1, column=0)
+recipient_public_key_entry = tk.Entry(encryption_frame, width=30)
+recipient_public_key_entry.grid(row=1, column=1)
+
+tk.Label(encryption_frame, text="Message to Encrypt: ").grid(row=2, column=0)
 encryption_entry = tk.Entry(encryption_frame, width=30)
-encryption_entry.grid(row=0, column=1)
+encryption_entry.grid(row=2, column=1)
+
 encrypt_button = tk.Button(encryption_frame, text="Encrypt")
-encrypt_button.grid(row=1, column=0, columnspan=2)
+encrypt_button.grid(row=3, column=0, columnspan=2)
 encryption_result_label = tk.Label(encryption_frame, text="Encrypted Text: ")
-encryption_result_label.grid(row=2, column=0, columnspan=2)
+encryption_result_label.grid(row=4, column=0, columnspan=2)
 
-tk.Label(decryption_frame, text="Decryption - Statement:").grid(row=0, column=0)
+# Decryption Frame
+tk.Label(decryption_frame, text="Your Private Key: ").grid(row=0, column=0)
+private_key_entry = tk.Entry(decryption_frame, width=30)
+private_key_entry.grid(row=0, column=1)
+
+tk.Label(decryption_frame, text="Encrypted Message: ").grid(row=1, column=0)
 decryption_entry = tk.Entry(decryption_frame, width=30)
-decryption_entry.grid(row=0, column=1)
-decrypt_button = tk.Button(decryption_frame, text="Decrypt")
-decrypt_button.grid(row=1, column=0, columnspan=2)
-decryption_result_label = tk.Label(decryption_frame, text="Decrypted Text: ")
-decryption_result_label.grid(row=2, column=0, columnspan=2)
+decryption_entry.grid(row=1, column=1)
 
+decrypt_button = tk.Button(decryption_frame, text="Decrypt")
+decrypt_button.grid(row=2, column=0, columnspan=2)
+decryption_result_label = tk.Label(decryption_frame, text="Decrypted Text: ")
+decryption_result_label.grid(row=3, column=0, columnspan=2)
+
+# Initially display the encryption frame
 encryption_frame.grid(row=0, column=0, sticky='nsew')
 
 window.mainloop()

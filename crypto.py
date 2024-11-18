@@ -3,6 +3,18 @@ from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
+salt = b"thesalt"
+
+def encrypt(data, password):
+    key = deriveKey(password, 32, salt)
+    token = sym_encrypt(data, key)
+    return token
+
+def decrypt(token, password):
+    key = deriveKey(password, 32, salt)
+    data = sym_decrypt(token, key)
+    return data
+
 #returns a new generated a 32-byte fernet key for symmetric encryption
 def generateSymKey():
     key = Fernet.generate_key()

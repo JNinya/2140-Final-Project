@@ -11,19 +11,7 @@ def toggle_frame():
         decryption_frame.grid_forget()
         toggle_button.config(text="Switch to Decryption")
 
-
-salt = b"thesalt"
-
-def encrypt(data, password):
-    key = deriveKey(password, 32, salt)
-    token = sym_encrypt(data, key)
-    return token
-
-def decrypt(token, password):
-    key = deriveKey(password, 32, salt)
-    data = sym_decrypt(token, key)
-    return
-
+#triggers when the encrypt button is pressed
 def encrypt_button_pressed():
     password = recipient_public_key_entry.get()
     data = encryption_entry.get()
@@ -31,9 +19,14 @@ def encrypt_button_pressed():
     encrypted_text_entry.delete(0, tk.END)
     encrypted_text_entry.insert(0, encrypted_text)
 
-
+#triggers when the decrypt button is pressed
 def decrypt_button_pressed():
-    print("decrypt!!")
+    password = private_key_entry.get()
+    token = decryption_entry.get()
+    decrypted_text = decrypt(token, password)
+    decrypted_text_entry.delete(0, tk.END)
+    decrypted_text_entry.insert(0, decrypted_text)
+    
 
 window = tk.Tk()
 window.title('Encryption Tool')
@@ -46,7 +39,7 @@ toggle_button = tk.Button(window, text="Switch to Decryption", command=toggle_fr
 toggle_button.grid(row=1, column=0, columnspan=2)
 
 # Encryption Frame
-tk.Label(encryption_frame, text="Recipient's Public Key: ").grid(row=1, column=0)
+tk.Label(encryption_frame, text="Password: ").grid(row=1, column=0)
 recipient_public_key_entry = tk.Entry(encryption_frame, width=30)
 recipient_public_key_entry.grid(row=1, column=1)
 
@@ -63,7 +56,7 @@ encrypted_text_entry.grid(row=4, column=1, sticky='w')
 
 
 # Decryption Frame
-tk.Label(decryption_frame, text="Your Private Key: ").grid(row=0, column=0)
+tk.Label(decryption_frame, text="Password: ").grid(row=0, column=0)
 private_key_entry = tk.Entry(decryption_frame, width=30)
 private_key_entry.grid(row=0, column=1)
 
@@ -75,6 +68,8 @@ decrypt_button = tk.Button(decryption_frame, text="Decrypt", command=decrypt_but
 decrypt_button.grid(row=2, column=0, columnspan=2)
 decryption_result_label = tk.Label(decryption_frame, text="Decrypted Text: ")
 decryption_result_label.grid(row=3, column=0, columnspan=2)
+decrypted_text_entry = tk.Entry(decryption_frame, width=30)
+decrypted_text_entry.grid(row=4, column=1, sticky='w')
 
 # Initially display the encryption frame
 encryption_frame.grid(row=0, column=0, sticky='nsew')

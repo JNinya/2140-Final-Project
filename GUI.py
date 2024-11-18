@@ -67,7 +67,7 @@ decryption_entry.grid(row=1, column=1)
 decrypt_button = tk.Button(decryption_frame, text="Decrypt", command=decrypt_button_pressed)
 decrypt_button.grid(row=2, column=0, columnspan=2)
 decryption_result_label = tk.Label(decryption_frame, text="Decrypted Text: ")
-decryption_result_label.grid(row=4, column=0, columnspan=2)
+decryption_result_label.grid(row=4, column=0, sticky='e')
 decrypted_text_entry = tk.Entry(decryption_frame, width=30)
 decrypted_text_entry.grid(row=4, column=1, sticky='w')
 

@@ -1,13 +1,23 @@
 from crypto import *
-from GUI import *
+from GUI import window
+
+
+
+
+
+
 
 window.mainloop()
 
 
 
 
+
+
+
+
 """
-salt = b"thesalt"
+
 
 def start():
     choice = input("Would you like to encrypt or decrypt (e/d)?")

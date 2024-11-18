@@ -1,5 +1,12 @@
 from crypto import *
+from GUI import *
 
+window.mainloop()
+
+
+
+
+"""
 salt = b"thesalt"
 
 def start():
@@ -30,3 +37,4 @@ def decrypt():
     print(data)
 
 start()
+"""

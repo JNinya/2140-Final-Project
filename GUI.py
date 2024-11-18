@@ -51,4 +51,4 @@ decryption_result_label.grid(row=3, column=0, columnspan=2)
 # Initially display the encryption frame
 encryption_frame.grid(row=0, column=0, sticky='nsew')
 
-window.mainloop()
+

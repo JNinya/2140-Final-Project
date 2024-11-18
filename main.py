@@ -1,5 +1,5 @@
 from crypto import *
-from GUI import window
+from GUI import *
 
 
 

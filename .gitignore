@@ -9,6 +9,7 @@ dist/
 *.py[cod]
 *$py.class
 *.pem
+*.spec
 
 #stuff that jack was working on
 config.json

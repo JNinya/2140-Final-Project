@@ -9,3 +9,7 @@ dist/
 *.py[cod]
 *$py.class
 *.pem
+
+#stuff that jack was working on
+config.json
+jsonReader.py

@@ -27,8 +27,9 @@ def decrypt(token, password):
 def encrypt_button_pressed():
     password = recipient_public_key_entry.get()
     data = encryption_entry.get()
-    print(encrypt(data, password))
-    encryption_result_label
+    encrypted_text = encrypt(data, password)
+    encrypted_text_entry.delete(0, tk.END)
+    encrypted_text_entry.insert(0, encrypted_text)
 
 
 def decrypt_button_pressed():
@@ -55,8 +56,11 @@ encryption_entry.grid(row=2, column=1)
 
 encrypt_button = tk.Button(encryption_frame, text="Encrypt", command=encrypt_button_pressed)
 encrypt_button.grid(row=3, column=0, columnspan=2)
-encryption_result_label = tk.Label(encryption_frame, text="Encrypted Text: ")
-encryption_result_label.grid(row=4, column=0, columnspan=2)
+encryption_result_label = tk.Label(encryption_frame, text="Encrypted Text:")
+encryption_result_label.grid(row=4, column=0, sticky='e')
+encrypted_text_entry = tk.Entry(encryption_frame, width=30)
+encrypted_text_entry.grid(row=4, column=1, sticky='w')
+
 
 # Decryption Frame
 tk.Label(decryption_frame, text="Your Private Key: ").grid(row=0, column=0)

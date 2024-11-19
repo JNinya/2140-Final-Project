@@ -1,5 +1,5 @@
 import tkinter as tk
-from crypto import *
+from crypto import symCrypt
 
 # Function to toggle between encryption and decryption frames
 def toggle_frame():
@@ -12,11 +12,13 @@ def toggle_frame():
         decryption_frame.grid_forget()  # Hide the decryption frame
         toggle_button.config(text="Switch to Decryption")  # Update button text
 
+sc = symCrypt()
+
 # Function triggered when the Encrypt button is pressed
 def encrypt_button_pressed():
     password = recipient_public_key_entry.get()  # Get the password from the input field
     data = encryption_entry.get()  # Get the text to encrypt from the input field
-    encrypted_text = encrypt(data, password)  # Encrypt the data using the password
+    encrypted_text = sc.encrypt(data, password)  # Encrypt the data using the password
     encrypted_text_entry.delete(0, tk.END)  # Clear the output field
     encrypted_text_entry.insert(0, encrypted_text)  # Display the encrypted text in the output field
 
@@ -24,7 +26,7 @@ def encrypt_button_pressed():
 def decrypt_button_pressed():
     password = private_key_entry.get()  # Get the password from the input field
     token = decryption_entry.get()  # Get the encrypted message from the input field
-    decrypted_text = decrypt(token, password)  # Decrypt the message using the password
+    decrypted_text = sc.decrypt(token, password)  # Decrypt the message using the password
     decrypted_text_entry.delete(0, tk.END)  # Clear the output field
     decrypted_text_entry.insert(0, decrypted_text)  # Display the decrypted text in the output field
 

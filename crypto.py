@@ -5,15 +5,17 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 salt = b"thesalt"
 
-def encrypt(data, password):
-    key = deriveKey(password, 32, salt)
-    token = sym_encrypt(data, key)
-    return token
+class symCrypt:
 
-def decrypt(token, password):
-    key = deriveKey(password, 32, salt)
-    data = sym_decrypt(token, key)
-    return data
+    def encrypt(self, data, password):
+        key = deriveKey(password, 32, salt)
+        token = sym_encrypt(data, key)
+        return token
+
+    def decrypt(self, token, password):
+        key = deriveKey(password, 32, salt)
+        data = sym_decrypt(token, key)
+        return data
 
 #returns a new generated a 32-byte fernet key for symmetric encryption
 def generateSymKey():
